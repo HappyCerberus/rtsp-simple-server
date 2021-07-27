@@ -289,7 +289,7 @@ func (conf *Conf) fillAndCheck() error {
 			pconf = conf.Paths[name]
 		}
 
-		err := pconf.fillAndCheck(name)
+		err := pconf.FillAndCheck(name)
 		if err != nil {
 			return err
 		}

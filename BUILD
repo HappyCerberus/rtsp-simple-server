@@ -32,6 +32,26 @@ go_binary(
     visibility = ["//visibility:public"],
 )
 
+go_binary(
+    name = "ingress",
+    srcs = [ "ingress.go" ],
+    deps = [
+        "//internal/conf",
+        "//internal/confwatcher",
+        "//internal/hlsserver",
+        "//internal/logger",
+        "//internal/metrics",
+        "//internal/pathman",
+        "//internal/pprof",
+        "//internal/rlimit",
+        "//internal/rtmpserver",
+        "//internal/rtspserver",
+        "//internal/stats",
+        "@com_github_aler9_gortsplib//pkg/headers:go_default_library",
+        "@in_gopkg_alecthomas_kingpin_v2//:go_default_library",
+    ],
+    visibility = ["//visibility:public"],
+)
 
 # TODO: this test is directly executing docker commands, which is not something
 #       you can do in a bazel sandbox. Needs fixing, commented out for now.

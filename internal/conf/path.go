@@ -104,7 +104,7 @@ type PathConf struct {
 	RunOnReadRestart        bool          `yaml:"runOnReadRestart"`
 }
 
-func (pconf *PathConf) fillAndCheck(name string) error {
+func (pconf *PathConf) FillAndCheck(name string) error {
 	if name == "" {
 		return fmt.Errorf("path name can not be empty")
 	}
