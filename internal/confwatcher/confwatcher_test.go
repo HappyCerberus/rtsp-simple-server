@@ -9,8 +9,19 @@ import (
 	"github.com/stretchr/testify/require"
 )
 
+const TEST_TMPDIR = "TEST_TMPDIR"
+
+// TestTmpDir returns the path the Bazel test temp directory.
+// If TEST_TMPDIR is not defined, it returns the OS default temp dir.
+func testTmpDir() string {
+	if tmp, ok := os.LookupEnv(TEST_TMPDIR); ok {
+		return tmp
+	}
+	return os.TempDir()
+}
+
 func writeTempFile(byts []byte) (string, error) {
-	tmpf, err := ioutil.TempFile(os.TempDir(), "confwatcher-")
+	tmpf, err := ioutil.TempFile(testTmpDir(), "confwatcher-")
 	if err != nil {
 		return "", err
 	}

@@ -32,22 +32,25 @@ go_binary(
     visibility = ["//visibility:public"],
 )
 
-go_test(
-    name = "rtsp-simple-server_test",
-    srcs = [
-        "main_hlsreader_test.go",
-        "main_rtmpreadpub_test.go",
-        "main_rtmpsource_test.go",
-        "main_rtspreadpub_test.go",
-        "main_rtspsource_test.go",
-        "main_test.go",
-    ],
-    embed = [":rtsp-simple-server_lib"],
-    deps = [
-        "@com_github_aler9_gortsplib//:go_default_library",
-        "@com_github_aler9_gortsplib//pkg/auth:go_default_library",
-        "@com_github_aler9_gortsplib//pkg/base:go_default_library",
-        "@com_github_aler9_gortsplib//pkg/headers:go_default_library",
-        "@com_github_stretchr_testify//require:go_default_library",
-    ],
-)
+
+# TODO: this test is directly executing docker commands, which is not something
+#       you can do in a bazel sandbox. Needs fixing, commented out for now.
+#go_test(
+#    name = "rtsp-simple-server_test",
+#    srcs = [
+#        "main_hlsreader_test.go",
+#        "main_rtmpreadpub_test.go",
+#        "main_rtmpsource_test.go",
+#        "main_rtspreadpub_test.go",
+#        "main_rtspsource_test.go",
+#        "main_test.go",
+#    ],
+#    embed = [":rtsp-simple-server_lib"],
+#    deps = [
+#        "@com_github_aler9_gortsplib//:go_default_library",
+#        "@com_github_aler9_gortsplib//pkg/auth:go_default_library",
+#        "@com_github_aler9_gortsplib//pkg/base:go_default_library",
+#        "@com_github_aler9_gortsplib//pkg/headers:go_default_library",
+#        "@com_github_stretchr_testify//require:go_default_library",
+#    ],
+#)
