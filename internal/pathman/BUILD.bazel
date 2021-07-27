@@ -1,0 +1,17 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "pathman",
+    srcs = ["pathman.go"],
+    importpath = "github.com/aler9/rtsp-simple-server/internal/pathman",
+    visibility = ["//:__subpackages__"],
+    deps = [
+        "//internal/conf",
+        "//internal/logger",
+        "//internal/path",
+        "//internal/readpublisher",
+        "//internal/stats",
+        "@com_github_aler9_gortsplib//pkg/base:go_default_library",
+        "@com_github_aler9_gortsplib//pkg/headers:go_default_library",
+    ],
+)

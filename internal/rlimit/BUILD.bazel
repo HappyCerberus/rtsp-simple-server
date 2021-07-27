@@ -1,0 +1,11 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "rlimit",
+    srcs = [
+        "rlimit_unix.go",
+        "rlimit_win.go",
+    ],
+    importpath = "github.com/aler9/rtsp-simple-server/internal/rlimit",
+    visibility = ["//:__subpackages__"],
+)

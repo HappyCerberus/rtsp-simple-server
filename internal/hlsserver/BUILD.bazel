@@ -1,0 +1,14 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "hlsserver",
+    srcs = ["server.go"],
+    importpath = "github.com/aler9/rtsp-simple-server/internal/hlsserver",
+    visibility = ["//:__subpackages__"],
+    deps = [
+        "//internal/hlsconverter",
+        "//internal/logger",
+        "//internal/pathman",
+        "//internal/stats",
+    ],
+)

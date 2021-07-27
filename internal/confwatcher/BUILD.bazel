@@ -1,0 +1,16 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
+
+go_library(
+    name = "confwatcher",
+    srcs = ["confwatcher.go"],
+    importpath = "github.com/aler9/rtsp-simple-server/internal/confwatcher",
+    visibility = ["//:__subpackages__"],
+    deps = ["@com_github_fsnotify_fsnotify//:go_default_library"],
+)
+
+go_test(
+    name = "confwatcher_test",
+    srcs = ["confwatcher_test.go"],
+    embed = [":confwatcher"],
+    deps = ["@com_github_stretchr_testify//require:go_default_library"],
+)

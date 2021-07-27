@@ -1,0 +1,32 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
+
+go_library(
+    name = "hlsconverter",
+    srcs = [
+        "converter.go",
+        "multiaccessbuffer.go",
+        "tsfile.go",
+    ],
+    importpath = "github.com/aler9/rtsp-simple-server/internal/hlsconverter",
+    visibility = ["//:__subpackages__"],
+    deps = [
+        "//internal/aac",
+        "//internal/h264",
+        "//internal/logger",
+        "//internal/readpublisher",
+        "//internal/stats",
+        "@com_github_aler9_gortsplib//:go_default_library",
+        "@com_github_aler9_gortsplib//pkg/ringbuffer:go_default_library",
+        "@com_github_aler9_gortsplib//pkg/rtpaac:go_default_library",
+        "@com_github_aler9_gortsplib//pkg/rtph264:go_default_library",
+        "@com_github_asticode_go_astits//:go_default_library",
+        "@com_github_pion_rtp//:go_default_library",
+    ],
+)
+
+go_test(
+    name = "hlsconverter_test",
+    srcs = ["multiaccessbuffer_test.go"],
+    embed = [":hlsconverter"],
+    deps = ["@com_github_stretchr_testify//require:go_default_library"],
+)

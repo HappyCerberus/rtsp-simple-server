@@ -1,0 +1,13 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "logger",
+    srcs = [
+        "logger.go",
+        "syslog_unix.go",
+        "syslog_win.go",
+    ],
+    importpath = "github.com/aler9/rtsp-simple-server/internal/logger",
+    visibility = ["//:__subpackages__"],
+    deps = ["@com_github_gookit_color//:go_default_library"],
+)

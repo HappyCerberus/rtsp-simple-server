@@ -1,0 +1,14 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "rtmpserver",
+    srcs = ["server.go"],
+    importpath = "github.com/aler9/rtsp-simple-server/internal/rtmpserver",
+    visibility = ["//:__subpackages__"],
+    deps = [
+        "//internal/logger",
+        "//internal/pathman",
+        "//internal/rtmpconn",
+        "//internal/stats",
+    ],
+)

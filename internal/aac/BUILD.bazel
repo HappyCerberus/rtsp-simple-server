@@ -1,0 +1,15 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
+
+go_library(
+    name = "aac",
+    srcs = ["adts.go"],
+    importpath = "github.com/aler9/rtsp-simple-server/internal/aac",
+    visibility = ["//:__subpackages__"],
+)
+
+go_test(
+    name = "aac_test",
+    srcs = ["adts_test.go"],
+    embed = [":aac"],
+    deps = ["@com_github_stretchr_testify//require:go_default_library"],
+)

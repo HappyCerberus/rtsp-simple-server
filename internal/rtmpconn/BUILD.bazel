@@ -1,0 +1,23 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "rtmpconn",
+    srcs = ["conn.go"],
+    importpath = "github.com/aler9/rtsp-simple-server/internal/rtmpconn",
+    visibility = ["//:__subpackages__"],
+    deps = [
+        "//internal/externalcmd",
+        "//internal/h264",
+        "//internal/logger",
+        "//internal/readpublisher",
+        "//internal/rtcpsenderset",
+        "//internal/rtmp",
+        "//internal/stats",
+        "@com_github_aler9_gortsplib//:go_default_library",
+        "@com_github_aler9_gortsplib//pkg/headers:go_default_library",
+        "@com_github_aler9_gortsplib//pkg/ringbuffer:go_default_library",
+        "@com_github_aler9_gortsplib//pkg/rtpaac:go_default_library",
+        "@com_github_aler9_gortsplib//pkg/rtph264:go_default_library",
+        "@com_github_notedit_rtmp//av:go_default_library",
+    ],
+)

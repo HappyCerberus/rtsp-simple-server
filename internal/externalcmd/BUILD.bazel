@@ -1,0 +1,18 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "externalcmd",
+    srcs = [
+        "cmd.go",
+        "cmd_unix.go",
+        "cmd_win.go",
+    ],
+    importpath = "github.com/aler9/rtsp-simple-server/internal/externalcmd",
+    visibility = ["//:__subpackages__"],
+    deps = select({
+        "@io_bazel_rules_go//go/platform:windows": [
+            "@com_github_kballard_go_shellquote//:go_default_library",
+        ],
+        "//conditions:default": [],
+    }),
+)

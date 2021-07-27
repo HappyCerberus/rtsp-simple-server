@@ -1,0 +1,14 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "readpublisher",
+    srcs = ["readpublisher.go"],
+    importpath = "github.com/aler9/rtsp-simple-server/internal/readpublisher",
+    visibility = ["//:__subpackages__"],
+    deps = [
+        "//internal/conf",
+        "@com_github_aler9_gortsplib//:go_default_library",
+        "@com_github_aler9_gortsplib//pkg/base:go_default_library",
+        "@com_github_aler9_gortsplib//pkg/headers:go_default_library",
+    ],
+)

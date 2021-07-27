@@ -1,0 +1,18 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "rtspserver",
+    srcs = ["server.go"],
+    importpath = "github.com/aler9/rtsp-simple-server/internal/rtspserver",
+    visibility = ["//:__subpackages__"],
+    deps = [
+        "//internal/conf",
+        "//internal/logger",
+        "//internal/pathman",
+        "//internal/rtspconn",
+        "//internal/rtspsession",
+        "//internal/stats",
+        "@com_github_aler9_gortsplib//:go_default_library",
+        "@com_github_aler9_gortsplib//pkg/base:go_default_library",
+    ],
+)

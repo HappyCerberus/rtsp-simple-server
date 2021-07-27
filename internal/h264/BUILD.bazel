@@ -1,0 +1,26 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
+
+go_library(
+    name = "h264",
+    srcs = [
+        "annexb.go",
+        "anticompetition.go",
+        "avcc.go",
+        "dtsestimator.go",
+        "nalutype.go",
+    ],
+    importpath = "github.com/aler9/rtsp-simple-server/internal/h264",
+    visibility = ["//:__subpackages__"],
+)
+
+go_test(
+    name = "h264_test",
+    srcs = [
+        "annexb_test.go",
+        "anticompetition_test.go",
+        "avcc_test.go",
+        "dtsestimator_test.go",
+    ],
+    embed = [":h264"],
+    deps = ["@com_github_stretchr_testify//require:go_default_library"],
+)

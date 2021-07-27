@@ -1,0 +1,12 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "rtcpsenderset",
+    srcs = ["rtcpsenderset.go"],
+    importpath = "github.com/aler9/rtsp-simple-server/internal/rtcpsenderset",
+    visibility = ["//:__subpackages__"],
+    deps = [
+        "@com_github_aler9_gortsplib//:go_default_library",
+        "@com_github_aler9_gortsplib//pkg/rtcpsender:go_default_library",
+    ],
+)

@@ -1,0 +1,30 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
+
+go_library(
+    name = "conf",
+    srcs = [
+        "conf.go",
+        "path.go",
+    ],
+    importpath = "github.com/aler9/rtsp-simple-server/internal/conf",
+    visibility = ["//:__subpackages__"],
+    deps = [
+        "//internal/confenv",
+        "//internal/logger",
+        "@com_github_aler9_gortsplib//:go_default_library",
+        "@com_github_aler9_gortsplib//pkg/base:go_default_library",
+        "@com_github_aler9_gortsplib//pkg/headers:go_default_library",
+        "@in_gopkg_yaml_v2//:go_default_library",
+        "@org_golang_x_crypto//nacl/secretbox:go_default_library",
+    ],
+)
+
+go_test(
+    name = "conf_test",
+    srcs = ["conf_test.go"],
+    embed = [":conf"],
+    deps = [
+        "@com_github_stretchr_testify//require:go_default_library",
+        "@org_golang_x_crypto//nacl/secretbox:go_default_library",
+    ],
+)
